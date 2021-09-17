@@ -47,7 +47,6 @@ Things you may want to cover:
 | ----------------- | ---------- | ----------- |
 | goods_name        | string     | null: false |
 | price             | integer    | null: false |
-| image             | string     | null: false |
 | category          | string     | null: false |
 | condition         | string     | null: false |
 | shipping_charges  | string     | null: false |
