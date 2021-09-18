@@ -36,36 +36,43 @@ Things you may want to cover:
 | last_name          | string   | null: false |
 | fn_furigana        | string   | null: false |
 | ln_furigana        | string   | null: false |
-| dob                | datetime | null: false |
+| dob                | date     | null: false |
 
 ### Association
-- belongs_to :buyer
 - has_many :goods
+- has_many :user_goods
 
 ## goodsテーブル
-| Column            | Type       | Options     |
-| ----------------- | ---------- | ----------- |
-| goods_name        | string     | null: false |
-| price             | integer    | null: false |
-| category          | string     | null: false |
-| condition         | string     | null: false |
-| shipping_charges  | string     | null: false |
-| ss_area           | string     | null: false |
-| es_date           | string     | null: false |
-| user              | references | null: false, foreign_key: true |
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| name                | string     | null: false |
+| price               | integer    | null: false |
+| category_id         | integer    | null: false |
+| condition_id        | integer    | null: false |
+| shipping_charges_id | integer    | null: false |
+| area_id             | integer    | null: false |
+| date_id             | integer    | null: false |
+| user                | references | null: false, foreign_key: true |
+
+### Association
+- has_many :user
+- has_many :user_goods
+
+## user_goodsテーブル
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| user_id             | integer    | null: false |
+| goods_id            | integer    | null: false |
 
 ### Association
 - belongs_to :user
-- belongs_to :buyers
+- belongs_to :goods
 
-## buyersテーブル
+## addressテーブル
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
-| card_number      | integer    | null: false |
-| expiration       | datetime   | null: false |
-| cvc              | integer    | null: false |
-| postal_code      | integer    | null: false |
-| prefectures      | string     | null: false |
+| postal_code      | string     | null: false |
+| area_id          | integer    | null: false |
 | city             | string     | null: false |
 | address          | string     | null: false |
 | building         | string     |             |
@@ -73,5 +80,5 @@ Things you may want to cover:
 | user             | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
-- has_many :goods
+- 
+- 
