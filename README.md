@@ -80,4 +80,4 @@ Things you may want to cover:
 | user_products    | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
+- belongs_to :user_products
