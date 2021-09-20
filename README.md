@@ -56,7 +56,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- belongs_to :user_product
+- has_one :user_product
 
 ## user_productsテーブル
 | Column            | Type       | Options                        |
@@ -77,7 +77,7 @@ Things you may want to cover:
 | address          | string     | null: false |
 | building         | string     |             |
 | telephone_number | string     | null: false |
-| user             | references | null: false, foreign_key: true |
+| user_products    | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
