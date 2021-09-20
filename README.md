@@ -39,10 +39,10 @@ Things you may want to cover:
 | birthdate          | date     | null: false |
 
 ### Association
-- has_many :products
-- has_many :user_products
+- has_many :items
+- has_many :user_items
 
-## productsテーブル
+## itemsテーブル
 | Column             | Type       | Options     |
 | ------------------ | ---------- | ----------- |
 | name               | string     | null: false |
@@ -56,13 +56,13 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- has_one :user_product
+- has_one :user_item
 
-## user_productsテーブル
+## user_itemsテーブル
 | Column            | Type       | Options                        |
 | ----------------- | ---------- | ------------------------------ |
 | user              | references | null: false, foreign_key: true |
-| product           | references | null: false, foreign_key: true |
+| item              | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -80,4 +80,4 @@ Things you may want to cover:
 | user_products    | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user_products
+- belongs_to :user_items
