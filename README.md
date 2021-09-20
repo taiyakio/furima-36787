@@ -30,19 +30,19 @@ Things you may want to cover:
 | Column             | Type     | Options     |
 | ------------------ | -------- | ----------- |
 | nickname           | string   | null: false |
-| email              | string   | null: false |
+| email              | string   | null: false, unique: true |
 | encrypted_password | string   | null: false |
 | first_name         | string   | null: false |
 | last_name          | string   | null: false |
 | fn_furigana        | string   | null: false |
 | ln_furigana        | string   | null: false |
-| dob                | date     | null: false |
+| birthdate          | date     | null: false |
 
 ### Association
-- has_many :goods
-- has_many :user_goods
+- has_many :products
+- has_many :user_products
 
-## goodsテーブル
+## productsテーブル
 | Column              | Type       | Options     |
 | ------------------- | ---------- | ----------- |
 | name                | string     | null: false |
@@ -55,20 +55,20 @@ Things you may want to cover:
 | user                | references | null: false, foreign_key: true |
 
 ### Association
-- has_many :user
-- has_many :user_goods
+- belongs_to :user
+- has_many :user_products
 
-## user_goodsテーブル
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| user_id             | integer    | null: false |
-| goods_id            | integer    | null: false |
+## user_productsテーブル
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| user_id              | integer    | null: false, foreign_key: true |
+| product_id           | integer    | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- belongs_to :goods
+- belongs_to :products
 
-## addressテーブル
+## shipping_addressテーブル
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
 | postal_code      | string     | null: false |
@@ -80,5 +80,4 @@ Things you may want to cover:
 | user             | references | null: false, foreign_key: true |
 
 ### Association
-- 
-- 
+- belongs_to :users
