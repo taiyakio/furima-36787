@@ -47,6 +47,7 @@ Things you may want to cover:
 | ------------------ | ---------- | ----------- |
 | name               | string     | null: false |
 | price              | integer    | null: false |
+| explanation        | text       | null: false |
 | category_id        | integer    | null: false |
 | condition_id       | integer    | null: false |
 | shippingcharges_id | integer    | null: false |
