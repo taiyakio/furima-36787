@@ -6,11 +6,18 @@ class User < ApplicationRecord
   validates :nickname, :birthdate, presence: true
   
   # passwordが6文字以上・半角英数字混合でなければ登録できない
-  validates :password, :password_confirmation, length:{minimum:6}, format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
+  with_options length:{minimum:6}, format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/} do
+    validates :password, :password_confirmation
+  end
 
   # 名前・名字が全角（漢字・ひらがな・カタカナ）でなければ登録できない
-  validates :first_name, :last_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'は全角文字を使用してください' }
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'は全角文字を使用してください' } do
+    validates :first_name, :last_name
+  end
 
   # 名前カナ・名字カナがカタカナでなければ登録できない
-  validates :fn_furigana, :ln_furigana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい' }
+  with_options presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい' } do
+    validates :fn_furigana, :ln_furigana
+  end
+
 end
